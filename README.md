@@ -1,230 +1,359 @@
-# Credit-Risk-Analysis-Borrower-Segmentation-for-Nova-Bank
-## Project Overview
-This project analyzes credit risk for **Nova Bank**, a financial institution providing **personal, medical, education, and business loans** across the **USA, UK, and Canada**.
+# Nova Bank Credit Risk Analysis
 
-The objective is to identify **which borrower segments are more likely to default**, understand the **main drivers of default**, and develop a **risk segmentation framework** to support better lending decisions.
+> **Data Analyst Portfolio Project | Credit Risk & Lending Analytics**
 
-This project combines:
-- Exploratory Data Analysis (EDA)
-- Credit Risk Analytics
-- Business Intelligence Thinking
-- Risk Segmentation
-- Executive Reporting (McKinsey-style)
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas)
+![NumPy](https://img.shields.io/badge/NumPy-Analysis-013243?logo=numpy)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-11557c)
+![Seaborn](https://img.shields.io/badge/Seaborn-Visualization-4c72b0)
 
----
+## 1. Project Overview
 
-# Business Context
+Credit risk is one of the most important challenges in lending: a bank needs to approve enough loans to support portfolio growth while controlling the probability and cost of default.
 
-Nova Bank faces a fundamental lending challenge:
+This project analyzes **Nova Bank's loan portfolio** to identify the key drivers of borrower default and translate the findings into actionable lending policies.
 
-> How can the bank maximize loan growth while minimizing credit losses?
+The analysis focuses on three questions:
 
-Approving too many high-risk borrowers increases:
-- Loan defaults
-- Credit losses
-- Provision expenses
-- Portfolio deterioration
+1. **Who is most likely to default?**
+2. **Which borrower and loan characteristics drive default risk?**
+3. **How can the bank use these findings to improve lending decisions?**
 
-However, overly strict approval policies may:
-- Reduce revenue
-- Lower loan growth
-- Reject potentially profitable borrowers
+### Analytical Flow
 
-Therefore, understanding borrower risk profiles is critical for improving underwriting and portfolio quality.
-
----
-
-# Business Questions
-
-This analysis aims to answer the following questions:
-
-1. Which types of borrowers are more likely to default?
-2. Do certain loan purposes carry higher risk?
-3. How do loan-to-income and debt-to-income ratios affect repayment?
-4. Does employment type or home ownership matter?
-5. How do past defaults and credit history affect risk?
-6. Are there differences between borrowers in the USA, UK, and Canada?
-7. Which loan grades or terms are safer?
-8. Can borrowers be segmented into safe vs risky groups?
-
----
-
-# Dataset Overview
-
-### Dataset Size
-- **Rows:** 32,574 borrowers
-- **Features:** 30+ variables
-
-### Target Variable
-`loan_status`
-- 0 = Non-default
-- 1 = Default
-
-### Feature Categories
-
-#### Borrower Demographics
-- person_age
-- gender
-- marital_status
-- education_level
-- country
-- state
-- city
-
-#### Financial Capacity
-- person_income
-- other_debt
-- debt_to_income_ratio
-- loan_to_income_ratio
-
-#### Credit History
-- cb_person_default_on_file
-- cb_person_cred_hist_length
-- past_delinquencies
-- open_accounts
-- credit_utilization_ratio
-
-#### Loan Information
-- loan_amnt
-- loan_intent
-- loan_grade
-- loan_int_rate
-- loan_term_months
-
-#### Stability Indicators
-- employment_type
-- person_emp_length
-- person_home_ownership
-
----
-
-# Tech Stack
-
-- **Python**
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- Jupyter Notebook
-- Power BI
----
-
-# Analysis Framework
-
-Data Cleaning → Univariate Overview → Bivariate → Multivariable Cross-tab → Risk Scoring → Insights & Recommendations
-
----
-
-# Key Business Insights
-
-## Safe Borrowers
-Characteristics:
-- High income
-- Low DTI
-- Grade A/B
-- No prior default
-- Own home / mortgage
-
-Default rate:
-**3.27%**
-
----
-
-## High-Risk Borrowers
-Characteristics:
-- Low income
-- DTI > 42%
-- Grade D–G
-- Previous default
-- Rent
-- Multiple delinquencies
-
-Default rate:
-**39.91%**
-
----
-
-# Recommendations
-
-Nova Bank should adopt risk-based lending policies.
-
-## 1. Auto-Approve Safe Borrowers
-Criteria:
-- Grade A–B
-- Low DTI
-- Strong income
-
-Benefits:
-- Faster approval
-- Better customer experience
-
----
-
-## 2. Manual Review for Moderate Borrowers
-Require:
-- Additional income verification
-- Debt assessment
-
----
-
-## 3. Tighten Approval for High-Risk Borrowers
-Red flags:
-- Low income
-- DTI > 42%
-- Grade D–G
-
-Actions:
-- Reduce loan amount
-- Increase pricing
-- Require collateral
-
----
-
-## 4. Build Early Warning System
-Monitor:
-- Rising DTI
-- Delinquencies
-- Credit utilization spikes
-
-Purpose:
-- Detect default risk earlier
-
----
-
-# Dashboard Preview
-
-([Add Power BI screenshots here](https://github.com/DinhNhatAnh/Credit-Risk-Analysis-Borrower-Segmentation-for-Nova-Bank/blob/main/Dashboard%20Credit%20Risk%20Analysis.pdf))
-
----
-
-# Executive Summary
-
-This project demonstrates that credit default is not driven by a single variable.
-
-The strongest default risk occurs when multiple risk factors accumulate:
-
-* Weak repayment capacity
-* High leverage
-* Poor credit history
-* Weak loan quality
-
-Final conclusion:
-
-> Credit default is primarily driven by the accumulation of financial stress, poor credit behavior, and risky loan characteristics.
-
-This analysis provides a practical framework for improving underwriting decisions and reducing portfolio losses.
-
----
-
-# Repository Structure
-
-```bash
-credit-risk-analysis/
-│
-├── notebooks
-├── dashboard
-├── reports (pdf)
-├── file final_report
-├── README.md
+```text
+Raw Loan Data
+      ↓
+Data Cleaning & Preparation
+      ↓
+Exploratory Data Analysis
+      ↓
+Risk Driver Analysis
+      ↓
+Risk Segmentation
+      ↓
+Business Recommendations
 ```
 
+> **Scope:** Analysis and visualization are performed entirely in **Jupyter Notebook** using Python. No Power BI is included in this project.
+
+---
+
+## 2. Business Problem
+
+Nova Bank provides personal, medical, education, and business loans across the **USA, UK, and Canada**.
+
+The key business challenge is to balance:
+
+**Loan Growth ↔ Credit Risk ↔ Customer Experience**
+
+Approving too many high-risk borrowers can increase default losses, while overly conservative approval policies can reject potentially profitable customers.
+
+Therefore, the objective is not simply to identify whether a borrower defaults, but to identify **risk thresholds and borrower segments that can support better lending decisions**.
+
+---
+
+## 3. Dataset
+
+The dataset contains **32,574 loan applications/borrowers** and more than 30 borrower and loan-related variables.
+
+| Category | Examples |
+|---|---|
+| Borrower profile | Age, income, employment length |
+| Financial profile | Debt-to-income ratio, loan-to-income ratio |
+| Credit profile | Credit history, prior default, loan grade |
+| Loan characteristics | Loan amount, interest rate, loan intent, loan term |
+| Ownership | Home ownership |
+| Geography | Country |
+| Target | `loan_status` |
+
+The overall observed **Default Rate is 21.8%**.
+
+---
+
+## 4. Analytical Approach
+
+### 4.1 Data Preparation
+
+- Inspect dataset dimensions and data types
+- Identify missing values and duplicates
+- Check categorical value consistency
+- Review numerical distributions and potential outliers
+- Validate the target variable
+- Create derived variables required for risk analysis
+- Prepare risk segments and analytical bands
+
+### 4.2 Exploratory Data Analysis
+
+The analysis starts with portfolio-level questions:
+
+- What is the overall Default Rate?
+- How is the loan portfolio distributed across grades and borrower segments?
+- Which borrower characteristics are associated with higher default?
+- How does default vary across income, employment, and loan characteristics?
+- Are there meaningful differences between Default and Non-Default populations?
+
+### 4.3 Risk Driver Analysis
+
+Key dimensions include:
+
+- Loan Grade
+- Interest Rate
+- Loan-to-Income Ratio (LTI)
+- Income
+- Debt-to-Income Ratio (DTI)
+- Home Ownership
+- Prior Default
+- Geography
+
+Both **univariate/bivariate analysis** and **interaction analysis** are used to identify risk concentration and important thresholds.
+
+---
+
+# 5. Key Findings
+
+## Finding 1 — Loan Grade is the strongest risk boundary
+
+Loan Grade is the strongest categorical risk driver in the portfolio.
+
+Default Rate increases sharply from:
+
+**Grade C: 20.7% → Grade D: 59.0%**
+
+Grades **D–G reach approximately 59–98% Default Rate**.
+
+### Business implication
+
+Grade D+ represents a critical risk zone. Standard approval rules should therefore be replaced with significantly tighter underwriting controls for these borrowers.
+
+---
+
+## Finding 2 — Borrower affordability is a critical risk driver
+
+LTI shows one of the clearest quantitative thresholds in the analysis.
+
+Default Rate increases from:
+
+**15.2% → 68.2% when crossing the 30% LTI threshold.**
+
+Default Rate also shows a strong income gradient:
+
+**Low income: 43.3% → High income: 9.1%**
+
+However, income cannot completely compensate for poor credit quality.
+
+For example:
+
+> High-income borrowers with Grade D still show a **38.2% Default Rate**.
+
+### Business implication
+
+Income should be treated as a **risk modifier rather than a rescue variable**, while LTI >30% should be considered a key underwriting threshold.
+
+---
+
+## Finding 3 — Prior default and borrower characteristics enable targeted controls
+
+Borrowers with a prior default show approximately **2.05× higher default risk**.
+
+Interaction analysis also identifies extreme risk concentrations. In particular:
+
+> **RENT + DTI >70% → approximately 77–100% Default Rate** in observed interaction cells.
+
+### Business implication
+
+The bank can use these combinations to create **targeted underwriting rules**, instead of applying blanket rejection policies across the entire portfolio.
+
+---
+
+## Additional Findings
+
+### Interest Rate
+
+Interest rates above 14% are associated with approximately **50–68% Default Rate**.
+
+High-rate loans should therefore be reviewed to determine whether the loan grade and pricing appropriately reflect observed risk.
+
+### Geography
+
+Geography contributes very little discriminatory value:
+
+- USA: **21.86%**
+- UK: **21.73%**
+- Canada: **21.86%**
+
+The spread is only **0.13 percentage points**.
+
+**Business implication:** No country-specific underwriting policy is warranted based on the observed portfolio.
+
+---
+
+# 6. 3 Key Insights → 4 Immediate Actions → 1 Long-Term Strategy
+
+## 3 Key Insights
+
+### 1. Credit quality matters most
+Loan Grade D+ marks the clearest risk boundary, with Default Rate increasing sharply from Grade C to Grade D.
+
+### 2. Affordability drives additional risk
+LTI >30%, low income, and high DTI identify borrowers with materially higher default risk.
+
+### 3. Risk can be targeted rather than treated uniformly
+Prior default and combinations such as RENT + DTI >70% allow the bank to identify concentrated risk zones and apply differentiated controls.
+
+---
+
+## 4 Immediate Actions
+
+| Rule | Condition | Recommended Action | Rationale |
+|---|---|---|---|
+| **R1** | Grade D–G **AND** LTI ≥30% | **Auto-decline** | Observed DR reaches approximately 66–100% in the identified high-risk zone |
+| **R2** | RENT **AND** DTI >70% | **Auto-decline** | Observed DR reaches approximately 77–100% across interaction cells |
+| **R3** | Prior default = Yes | **Mandatory manual review** | Approximately 2.05× higher default risk |
+| **R4** | Interest rate >17% | **Re-validate loan grade** | High-rate loans show approximately 50–68% DR |
+
+These rules focus underwriting resources on the **highest-concentration risk zones** while avoiding blanket rejection of the entire portfolio.
+
+---
+
+# 7. Long-Term Strategy — Build a Risk-Based Lending System
+
+The long-term objective is to evolve from static rule-based approval toward a **Risk-Based Lending System** that differentiates approval, pricing, and risk controls according to borrower risk.
+
+| Risk Tier | Lending Strategy |
+|---|---|
+| 🟢 **Safe** | Fast-track approval + preferred pricing |
+| 🔵 **Moderate** | Standard approval + standard pricing |
+| 🟠 **Risky** | Enhanced verification + LTI cap at 25% + income documentation |
+| 🔴 **High Risky** | Manual review + collateral / co-signer |
+
+Importantly, **High Risky borrowers should not automatically be rejected**. Approximately **60% of High Risky borrowers do not default**, so blanket rejection could eliminate potentially good customers.
+
+The recommended approach is therefore:
+
+> **Tiered intervention rather than blanket rejection.**
+
+### Long-Term Roadmap
+
+```text
+Risk Scorecard
+      ↓
+Portfolio Monitoring
+      ↓
+Quarterly Recalibration
+      ↓
+Explainable Predictive Model
+      ↓
+Behavioral Risk Signals
+```
+
+---
+
+# 8. Analytical Outputs
+
+### Portfolio Overview
+- Overall Default Rate
+- Portfolio composition
+- Default Rate by Risk Segment
+- Default Rate by Loan Grade
+
+### Risk Driver Analysis
+- Default Rate by income band
+- Default Rate by LTI / DTI
+- Default Rate by home ownership
+- Default Rate by employment length
+- Default Rate by interest rate band
+- Default Rate by prior default status
+- Geographic comparison
+
+### Interaction Analysis
+- Income × Loan Grade
+- Home Ownership × DTI
+- Other borrower/loan risk combinations
+
+### Decision Support
+- Risk segmentation
+- High-risk threshold identification
+- Risk-based lending recommendations
+- Immediate underwriting rules
+
+---
+
+# 9. Tools & Libraries
+
+| Tool | Purpose |
+|---|---|
+| **Python** | Main analysis language |
+| **Jupyter Notebook** | Analysis, documentation, and visualization |
+| **Pandas** | Data cleaning and manipulation |
+| **NumPy** | Numerical analysis |
+| **Matplotlib** | Data visualization |
+| **Seaborn** | Statistical visualization |
+
+> This project intentionally uses **Jupyter Notebook as the single analytical and visualization environment**.
+
+---
+
+# 10. Project Structure
+
+```text
+nova-bank-credit-risk/
+│
+├── data/
+│   └── loan_data.csv
+│
+├── notebooks/
+│   └── Nova_Bank_Credit_Risk_Analysis.ipynb
+│
+├── images/
+│   ├── portfolio_overview.png
+│   ├── loan_grade_risk.png
+│   ├── affordability_analysis.png
+│   └── risk_interaction_heatmap.png
+│
+└── README.md
+```
+
+---
+
+# 11. Key Takeaway
+
+The analysis shows that credit risk is **not evenly distributed across the portfolio**.
+
+The strongest risk concentrations are associated with:
+
+> **Poor Loan Grade + High Leverage + Adverse Credit History**
+
+Rather than applying a single approval policy to all borrowers, Nova Bank can improve risk management by adopting a **risk-based lending approach**:
+
+```text
+Data
+  ↓
+Identify Risk Drivers
+  ↓
+Define Risk Thresholds
+  ↓
+Segment Borrowers
+  ↓
+Apply Tiered Lending Controls
+  ↓
+Monitor Portfolio Outcomes
+  ↓
+Continuously Improve
+```
+
+### Final Recommendation
+
+> **Move from one-size-fits-all lending toward a Risk-Based Lending System that accelerates low-risk approvals while applying progressively stronger controls to high-risk borrowers.**
+
+---
+
+## Author
+
+**Nhat Anh Dinh**  
+Data Analyst Portfolio Project  
+Finance & Banking → Data Analytics
+
+**Focus:** Credit Risk Analysis · Python · Data Visualization · Business Analytics
