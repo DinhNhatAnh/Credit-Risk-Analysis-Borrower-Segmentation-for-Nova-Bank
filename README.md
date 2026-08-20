@@ -296,29 +296,7 @@ Behavioral Risk Signals
 
 ---
 
-# 10. Project Structure
-
-```text
-nova-bank-credit-risk/
-│
-├── data/
-│   └── loan_data.csv
-│
-├── notebooks/
-│   └── Nova_Bank_Credit_Risk_Analysis.ipynb
-│
-├── images/
-│   ├── portfolio_overview.png
-│   ├── loan_grade_risk.png
-│   ├── affordability_analysis.png
-│   └── risk_interaction_heatmap.png
-│
-└── README.md
-```
-
----
-
-# 11. Key Takeaway
+# 10. Key Takeaway
 
 The analysis shows that credit risk is **not evenly distributed across the portfolio**.
 
