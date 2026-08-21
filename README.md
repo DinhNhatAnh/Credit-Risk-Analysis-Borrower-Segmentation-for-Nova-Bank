@@ -13,13 +13,18 @@
 
 Nova Bank needs to balance **loan growth with credit risk**. This project analyzes a personal-loan portfolio to understand the drivers of default and then moves from descriptive risk analysis to **Machine Learning prediction of `loan_status`**.
 
-The project answers three questions:
+The project answers these questions for Data Analysis:
 
-1. **Which borrower and loan characteristics are associated with higher default risk?**
-2. **Where are the clearest risk thresholds and high-risk combinations?**
-3. **Can Machine Learning improve default prediction beyond a hand-crafted risk scorecard?**
+- Which types of borrowers are more likely to default?
+- Do certain loan purposes (education, medical, personal, debt consolidation) carry more risk?
+- How do loan-to-income and debt-to-income ratios relate to repayment?
+- Does employment type or home ownership make a difference?
+- How do past defaults or longer credit histories affect loan outcomes?
+- Are there clear differences between borrowers in the USA, UK, and Canada?
+- Which loan grades or terms seem safer, and which are riskier?
+- Can groups of borrowers be identified that look “safe” versus “risky”?
 
-### Analytical Flow
+### Work Flow
 
 ```text
 Business Problem
@@ -36,8 +41,6 @@ Model Evaluation & Comparison
       ↓
 Risk-Based Lending Recommendations
 ```
-
-> **Scope:** Analysis, visualization, and Machine Learning are performed entirely in **Jupyter Notebook using Python**. No Power BI is included.
 
 ---
 
@@ -260,28 +263,7 @@ The preferred approach is **tiered intervention rather than blanket rejection**.
 
 ---
 
-# 12. Project Structure
-
-```text
-nova-bank-credit-risk/
-│
-├── data/
-│   └── loan_data.xlsx
-│
-├── notebooks/
-│   └── Nova_Bank_Credit_Risk_Analysis.ipynb
-│
-├── images/
-│   ├── eda/
-│   ├── risk_analysis/
-│   └── ml/
-│
-└── README.md
-```
-
----
-
-# 13. Final Takeaway
+# 12. Takeaway
 
 This project demonstrates an end-to-end approach to credit risk analytics:
 
